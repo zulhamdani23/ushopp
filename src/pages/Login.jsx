@@ -1,12 +1,10 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import "./Login.css"
-import bg from '../assets/BGLogin.png'
 
 const Login = () => {
   return (
     <div className='card-form-login'>
-    <img src={bg} alt="bg" className='bg-login'/>
     <Form className="custom-form">
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>

@@ -1,18 +1,17 @@
 .custom-form {
-  background-color: #1876d4; /* biru muda */
+  background-color: #1876d4;
   border-radius: 10px;
   padding: 20px;
 }
 
 .card-form-login {
-  background-color: #cf8888;
-  background-image: url('../assets/BG\ Login.png'); /* biru muda */
-  border-radius: 10px;
-  padding: 300px;
-}
-
-.bg-login {
-  position: absolute;
-  width: 2000px;
-  z-index: 10;
+  background-image: url('../assets/Bg.png');
+  background-repeat: no-repeat;
+  background-size: cover; 
+  height: 596px;  
+  width: 1500px;        
+  display: flex;
+  padding-bottom: 0;
+  justify-content: center;
+  align-items: center;
 }
