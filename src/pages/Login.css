@@ -1,17 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
 .custom-form {
-  background-color: #1876d4;
+  font-family: "Roboto", sans-serif;
+  background-color: #fff;
   border-radius: 10px;
   padding: 20px;
+  padding-left: 100px;
+  padding-right: 100px;
 }
 
 .card-form-login {
-  background-image: url('../assets/Bg.png');
-  background-repeat: no-repeat;
-  background-size: cover; 
   height: 596px;  
   width: 1500px;        
   display: flex;
-  padding-bottom: 0;
   justify-content: center;
   align-items: center;
 }
+
+.body-login {
+  background-image: url('../assets/Bg.png');
+  background-repeat: no-repeat;
+  background-size: cover; 
+  background-position: bottom center;
+  margin-top: 130px;
+}
+
+.sign-in {
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  color: #6f42c1;
+  padding-top: 0;
+}
+
+.logo-img {
+  display: block;
+  margin: 0 auto 10px; 
+  width: 100px;         
+  height: auto;
+  padding: 0;
+}
+
+.btn-purple {
+  background-color: #6f42c1; /* ungu */
+  border: none !important;   /* hapus border */
+  color: #fff;
+  font-size: 16px;           /* atur ukuran teks normal */
+  font-weight: 600;          /* biar tebal */
+  padding: 10px 25px;         /* tinggi & lebar proporsional */
+  border-radius: 8px;        /* rounded halus */
+  box-shadow: none !important; /* hapus shadow */
+  text-align: center;        /* teks ditengah */
+}
+
+.btn-purple:hover {
+  background-color: #5a32a3; /* ungu lebih gelap saat hover */
+  border-color: #5a32a3;
+}
+

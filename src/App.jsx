@@ -5,15 +5,13 @@ import Login from "./pages/Login";
 const App = () => {
   return (
     <BrowserRouter>
-            <NavbarComponents />
+            {/* <NavbarComponents /> */}
             <Routes>
                 <Route path="/login" element={
                       <Login/>
                 } />
                 <Route path="*" element={<Error/> } />
             </Routes>
-
-
         </BrowserRouter>
   )
 }
