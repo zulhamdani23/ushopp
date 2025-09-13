@@ -2,29 +2,42 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import "./Login.css"
 import logo from "../assets/logo1.png";
+import { Card } from 'react-bootstrap';
 
 const Login = () => {
   return (
-    <div className='body-login'>
-      <div className='card-form-login'>
-        <Form className="custom-form shadow">
-        <div className='logo-form'>
-          <img src={logo} alt="logo" className="logo-img mb-2"/>
-          <h6 className="sign-in text-center">Sign in</h6>
-        </div>
-          <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Email</Form.Label>
-            <Form.Control className="bg-secondary bg-opacity-10 border-0" type="email"/>
-          </Form.Group>
+    <div className="login-page">
+      <div className="login-container">
+        <Card className="login-card shadow">
+          <Card.Body>
+            <div className="text-center mb-4">
+              <img
+                src={logo}
+                alt="Logo"
+                className="login-logo"
+              />
+              <h5 className="mt-2 sign-in text-center">Sign In</h5>
+            </div>
 
-          <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label >Password</Form.Label>
-            <Form.Control className="bg-secondary bg-opacity-10 border-0" type="password"/>
-          </Form.Group>
-          <div className="d-flex justify-content-center">
-            <button type="button" class="btn-purple">Sign In</button>
-          </div>
-        </Form>
+            <Form>
+              <Form.Group className="mb-3" controlId="formEmail">
+                <Form.Label className='label-form'>Email</Form.Label>
+                <Form.Control className="bg-secondary bg-opacity-10 border-0" type="email"/>
+              </Form.Group>
+
+              <Form.Group className="mb-3" controlId="formPassword">
+                <Form.Label className='label-form'>Password</Form.Label>
+                <Form.Control className="bg-secondary bg-opacity-10 border-0" type="password"/>
+              </Form.Group>
+
+              <div className="d-grid justify-content-center">
+                <button class="btn-purple" type="submit">
+                  Sign In
+                </button>
+              </div>
+            </Form>
+          </Card.Body>
+        </Card>
       </div>
     </div>
   )

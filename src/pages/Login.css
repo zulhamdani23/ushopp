@@ -1,28 +1,34 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
-.custom-form {
-  font-family: "Roboto", sans-serif;
-  background-color: #fff;
-  border-radius: 10px;
-  padding: 20px;
-  padding-left: 100px;
-  padding-right: 100px;
-}
-
-.card-form-login {
-  height: 596px;  
-  width: 1500px;        
+/* Full page background */
+.login-page {
+  height: 100vh;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  background: url("../assets/Bg.png") no-repeat center center;
+  background-size: cover;
 }
 
-.body-login {
-  background-image: url('../assets/Bg.png');
-  background-repeat: no-repeat;
-  background-size: cover; 
-  background-position: bottom center;
-  margin-top: 130px;
+/* Centered card */
+.login-container {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+}
+
+/* Card styling */
+.login-card {
+  border-radius: 12px;
+  border: none;
+  padding: 20px;
+  background: #fff;
+}
+
+/* Logo */
+.login-logo {
+  width: 120px;
+  height: auto;
 }
 
 .sign-in {
@@ -30,14 +36,14 @@
   font-family: "Roboto", sans-serif;
   color: #6f42c1;
   padding-top: 0;
+  font-size: medium;
+  font-weight: bold;
 }
 
-.logo-img {
-  display: block;
-  margin: 0 auto 10px; 
-  width: 100px;         
-  height: auto;
-  padding: 0;
+.label-form {
+  font-family: "Roboto", sans-serif;
+  color: #6f42c1;
+  font-weight: bold;
 }
 
 .btn-purple {
