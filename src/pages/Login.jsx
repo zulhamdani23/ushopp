@@ -10,13 +10,13 @@ const Login = () => {
       <div className="login-container">
         <Card className="login-card shadow">
           <Card.Body>
-            <div className="text-center mb-4">
+            <div className="text-center">
               <img
                 src={logo}
                 alt="Logo"
                 className="login-logo"
               />
-              <h5 className="mt-2 sign-in text-center">Sign In</h5>
+              <h5 className="sign-in text-center">Sign In</h5>
             </div>
 
             <Form>
