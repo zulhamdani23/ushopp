@@ -1,29 +1,41 @@
-import { useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Offcanvas from 'react-bootstrap/Offcanvas';
+import { Nav } from "react-bootstrap";
+import { Link, useLocation } from "react-router-dom";
+import "./SidebarComponents.css";
 
 const SidebarComponents = () => {
-  const [show, setShow] = useState(false);
+  const location = useLocation();
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const menus = [
+    { title: "Daftar Mitra", path: "/mitra", icon: "📋" },
+    { title: "Daftar Produk", path: "/produk", icon: "📦" },
+    { title: "Daftar Agent", path: "/agent", icon: "👤" },
+    { title: "Transaksi Customer", path: "/transaksi", icon: "💳" },
+    { title: "Konten", path: "/konten", icon: "📝" },
+  ];
+
   return (
-    <>
-    <Button variant="primary" onClick={handleShow}>
-        Launch
-      </Button>
+    <div className="sidebar-container">
+      <div className="sidebar-logo">
+        <h5>JagoTrekr</h5>
+      </div>
 
-      <Offcanvas show={show} onHide={handleClose}>
-        <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Offcanvas</Offcanvas.Title>
-        </Offcanvas.Header>
-        <Offcanvas.Body>
-          Some text as placeholder. In real life you can have the elements you
-          have chosen. Like, text, images, lists, etc.
-        </Offcanvas.Body>
-      </Offcanvas>
-    </>
-  )
-}
+      <Nav className="flex-column sidebar-menu">
+        {menus.map((menu, i) => (
+          <Nav.Item key={i}>
+            <Link
+              to={menu.path}
+              className={`sidebar-link ${
+                location.pathname === menu.path ? "active" : ""
+              }`}
+            >
+              <span className="icon">{menu.icon}</span>
+              {menu.title}
+            </Link>
+          </Nav.Item>
+        ))}
+      </Nav>
+    </div>
+  );
+};
 
-export default SidebarComponents
+export default SidebarComponents;
