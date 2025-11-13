@@ -17,7 +17,7 @@ function LayoutWithNavbarSidebar({ children }) {
   );
 }
 
-function AppContent() {
+const AppContent = () => {
   const location = useLocation();
 
   // cek apakah sedang di halaman login

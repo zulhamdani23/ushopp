@@ -1,21 +1,54 @@
-import "./DaftarMitra.css"
-import { useState } from "react";
+import "./DaftarMitra.css";
+import { useState, useEffect } from "react";
 import { Table, Button, Form, InputGroup, Pagination } from "react-bootstrap";
-
+import  api from "../services/api"; // pastikan alias @ sudah diset, atau pakai ../api/mitraApi
+import MitraAddModal from "./AddMitra";
 
 const DaftarMitra = () => {
   const [search, setSearch] = useState("");
+  const [mitraList, setMitraList] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [showModal, setShowModal] = useState(false);
+  const [mode, setMode] = useState("add");
+  const [selectedMitra, setSelectedMitra] = useState(null);
 
-  const mitraList = [
-    { nama: "KUMON", email: "kumon@mail.com", telepon: "0912918238", alamat: "Bekasi", tgl: "10 Agustus 2019" },
-    { nama: "SEMPOA", email: "sempoa@mail.com", telepon: "0919293812", alamat: "Jakarta", tgl: "10 Juni 2019" },
-    { nama: "JARIMATIKA", email: "jarimatika@mail.com", telepon: "0818273125", alamat: "Depok", tgl: "10 Januari 2019" },
-    { nama: "APIQ", email: "apiq@mail.com", telepon: "0213828372", alamat: "Bogor", tgl: "10 Maret 2019" },
-  ];
+  const handleAdd = () => {
+    setSelectedMitra(null);
+    setMode("add");
+    setShowModal(true);
+  };
+
+  const handleEdit = (mitra) => {
+    setSelectedMitra(mitra);
+    setMode("edit");
+    setShowModal(true);
+  };
+
+  const loadMitra = async () => {
+    const data = await api.getMitraList();
+    setMitraList(data);
+  };
+
+  // fetch data pas awal render
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await api.getMitraList();
+      // console.log({data})
+      // setMitraList(data);
+      loadMitra();
+      setLoading(false);
+    };
+    fetchData();
+  }, []);
 
   const filtered = mitraList.filter((m) =>
-    m.nama.toLowerCase().includes(search.toLowerCase())
+    m.nama?.toLowerCase().includes(search.toLowerCase())
   );
+
+  if (loading) {
+    return <p style={{ textAlign: "center" }}>Loading data mitra...</p>;
+  }
+
 
   return (
     <div className="daftar-mitra-container">
@@ -24,7 +57,8 @@ const DaftarMitra = () => {
           <h5 className="title">Mitra</h5>
           <p className="subtitle">Daftar mitra yang bergabung</p>
         </div>
-        <button class="btn-purple">
+        {/* <button className="btn-purple" onClick={() => setShowModal(true)}> */}
+        <button className="btn-purple" onClick={handleAdd}>
           Tambah Mitra Baru
         </button>
       </div>
@@ -50,26 +84,44 @@ const DaftarMitra = () => {
             </tr>
           </thead>
           <tbody>
-            {filtered.map((m, i) => (
-              <tr key={i}>
-                <td>{m.nama}</td>
-                <td>{m.email}</td>
-                <td>{m.telepon}</td>
-                <td>{m.alamat}</td>
-                <td>{m.tgl}</td>
-                <td>
-                  <Button size="sm" variant="info" className="btn-edit me-2">
-                    Edit
-                  </Button>
-                  <Button size="sm" variant="danger" className="btn-hapus">
-                    Hapus
-                  </Button>
+            {filtered.length === 0 ? (
+              <tr>
+                <td colSpan="6" style={{ textAlign: "center" }}>
+                  Tidak ada data ditemukan
                 </td>
               </tr>
-            ))}
+            ) : (
+              filtered.map((m, i) => (
+                <tr key={m.id}>
+                  <td>{m.nama}</td>
+                  <td>{m.email}</td>
+                  <td>{m.telepon}</td>
+                  <td>{m.alamat}</td>
+                  <td>{m.tgl}</td>
+                  <td>
+                    <Button size="sm" variant="info" className="btn-edit me-2"  onClick={() => handleEdit(m)}>
+                      Edit
+                    </Button>
+                    <Button size="sm" variant="danger" className="btn-hapus">
+                      Hapus
+                    </Button>
+                  </td>
+                </tr>
+              ))
+            )}
           </tbody>
         </Table>
       </div>
+
+      {/* <MitraAddModal show={showModal} onHide={() => setShowModal(false)} onSuccess={loadMitra}/>
+      <MitraFormModal show={showModal} onHide={() => setShowModal(false)} mitra={selectedMitra} mode="edit" /> */}
+        <MitraAddModal
+        show={showModal}
+        onHide={() => setShowModal(false)}
+        mitra={selectedMitra}
+        mode={mode}
+        // refreshData={fetchMitra} // biar abis edit/tambah bisa reload data
+      />
 
       <div className="pagination-footer">
         <span>Showing 1 to 7 of 50 entries</span>

@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+.modal-tambah-mitra .modal-content {
+  border-radius: 16px;
+  padding: 10px 20px;
+  background: #fff;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.modal-tambah-mitra .modal-header {
+  border-bottom: none;
+  padding-top: 20px;
+}
+
+.modal-tambah-mitra .modal-title {
+  font-weight: 600;
+  font-size: 18px;
+  color: #333;
+}
+
+.modal-tambah-mitra .form-label {
+  font-weight: 500;
+  color: #444;
+}
+
+.modal-tambah-mitra .form-control {
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  font-size: 14px;
+}
+
+.modal-tambah-mitra .btn-cancel {
+  color: #6c757d;
+  border: none;
+}
+
+.modal-tambah-mitra .btn-save {
+  background-color: #6f42c1;
+  border: none;
+}
+
+.modal-tambah-mitra .btn-save:hover {
+  background-color: #5a34a3;
+}
